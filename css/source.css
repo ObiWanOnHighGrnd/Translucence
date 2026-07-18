@@ -1,3 +1,4 @@
+
 /**
  * @name Translucence
  * @version 2.0.0
@@ -192,15 +193,14 @@ html body [class*="tooltip" i] [class*="nub" i] {
 	overflow: hidden;
 }
  
-/* Glass styling for settings/modal panels (server settings,
-   edit role, user settings, etc.) — these sit on a separate
-   "layer" above the main app chrome that the base theme doesn't
-   reach, so they were staying solid dark. Best-effort keyword
-   match since exact class names are hashed and change often */
-[class*="layer" i] [class*="sidebarRegion" i],
-[class*="layer" i] [class*="contentRegion" i],
-[class*="layer" i] [class*="standardSidebarView" i],
-[class*="standardSidebarView" i] {
+/* Glass styling for the settings-modal header bars (confirmed
+   real classes this time, not guesses) — the "Back" bar, the
+   role-style boosting upsell card, and the sticky header above
+   the tabs (e.g. "Edit Role – ...") */
+[class*="titleContainer_e29cd7" i],
+[class*="roleStyleUpsell" i],
+[class*="header_c6bf1b" i],
+[class*="stickyHeader_c6bf1b" i] {
 	background: var(--main-content-color) !important;
 	backdrop-filter: blur(var(--app-blur));
 	-webkit-backdrop-filter: blur(var(--app-blur));
@@ -215,4 +215,3 @@ html body [class*="tooltip" i] [class*="nub" i] {
 	0%, 100% { box-shadow: 0 0 0 hsl(var(--accent-hue), var(--accent-saturation), var(--accent-lightness), 0.4); }
 	50%      { box-shadow: 0 0 16px 2px hsl(var(--accent-hue), var(--accent-saturation), var(--accent-lightness), 0.65); }
 }
- 
