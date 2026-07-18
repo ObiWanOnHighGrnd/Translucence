@@ -1,3 +1,4 @@
+
 /**
  * @name Translucence
  * @version 2.0.0
@@ -192,16 +193,24 @@ html body [class*="tooltip" i] [class*="nub" i] {
 	overflow: hidden;
 }
  
-/* Glass styling for the settings-modal header bars — matches
-   the same --popout-color/--popout-blur combo used everywhere
-   else in this theme */
-[class*="titleContainer_e29cd7" i],
-[class*="roleStyleUpsell" i],
-[class*="header_c6bf1b" i],
-[class*="stickyHeader_c6bf1b" i] {
+/* Glass styling for the role-style boosting upsell card */
+[class*="roleStyleUpsell" i] {
 	background: var(--popout-color) !important;
 	backdrop-filter: blur(var(--popout-blur));
 	-webkit-backdrop-filter: blur(var(--popout-blur));
+}
+ 
+/* Remove the background entirely from these two header bars —
+   no box at all, just the text/icons floating on the app
+   background. Removing a background never affects the text or
+   buttons inside it, just the box behind them */
+[class*="titleContainer_e29cd7" i],
+[class*="header_c6bf1b" i],
+[class*="stickyHeader_c6bf1b" i] {
+	background: transparent !important;
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+	box-shadow: none !important;
 }
  
 /* "New Unreads" pill — darker/flatter transparent, not the
@@ -221,4 +230,3 @@ html body [class*="tooltip" i] [class*="nub" i] {
 	0%, 100% { box-shadow: 0 0 0 hsl(var(--accent-hue), var(--accent-saturation), var(--accent-lightness), 0.4); }
 	50%      { box-shadow: 0 0 16px 2px hsl(var(--accent-hue), var(--accent-saturation), var(--accent-lightness), 0.65); }
 }
- 
