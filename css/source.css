@@ -221,6 +221,29 @@ html body [class*="tooltip" i] [class*="nub" i] {
 	-webkit-backdrop-filter: blur(var(--app-blur));
 }
  
+/* Remove backgrounds entirely from the Server Boosts page —
+   sidebar stat cards, notice card, level cards, additional
+   perks cards, and the top toolbar. Matched on the specific
+   hashed class suffixes from this page so it doesn't spill
+   into unrelated "container"/"card" elements elsewhere */
+[class*="sidebarContainer__89463" i],
+[class*="container__58c46" i],
+[class*="container__3f864" i],
+[class*="container__10ca6" i],
+[class*="container__1dc40" i],
+[class*="powerupsContainer__89463" i],
+[class*="container__5573a" i],
+[class*="card__823e1" i],
+[class*="parentContainer__5573a" i],
+[class*="container__6f9f7" i],
+[class*="toolbar__89463" i],
+[class*="container__9293f" i] {
+	background: transparent !important;
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+	box-shadow: none !important;
+}
+ 
 /* Soft breathing glow around mentioned/pinged messages,
    instead of a hard flash */
 [class*="mentioned"] {
@@ -230,3 +253,4 @@ html body [class*="tooltip" i] [class*="nub" i] {
 	0%, 100% { box-shadow: 0 0 0 hsl(var(--accent-hue), var(--accent-saturation), var(--accent-lightness), 0.4); }
 	50%      { box-shadow: 0 0 16px 2px hsl(var(--accent-hue), var(--accent-saturation), var(--accent-lightness), 0.65); }
 }
+ 
