@@ -212,31 +212,113 @@ html body [class*="tooltip" i] [class*="nub" i] {
 	box-shadow: none !important;
 }
  
-/* "New Unreads" pill — darker/flatter transparent, not the
-   lighter glass look used above */
-[class*="bar__7aaec" i] {
+/* "New Unreads" pill, the level-card outer wrapper, and the
+   Server Boosts stats panel — darker/flatter transparent, not
+   the lighter glass look used on popouts/tooltips */
+html body [class*="bar__7aaec" i],
+html body [class*="container__5573a" i][class*="card__823e1" i],
+html body [class*="container__1dc40" i]:not([class*="textContainer__1dc40" i]),
+html body [class*="container__3f864" i]:not([class*="headerContainer__3f864" i]),
+html body [class*="noItemsCard" i],
+html body [class*="emptyContainer__88a04" i],
+html body [class*="headingCard__92059" i] {
 	background: hsl(0,0%,0%,0.5) !important;
 	backdrop-filter: blur(var(--app-blur));
 	-webkit-backdrop-filter: blur(var(--app-blur));
+}
+ 
+/* Level-card progress/boost icon badge, and the progress bar
+   strip — fully transparent */
+html body [class*="progressContainer__823e1" i],
+html body [class*="boostContainer__823e1" i],
+html body [class*="progress__823e1" i] {
+	background: transparent !important;
+	background-color: transparent !important;
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+}
+ 
+/* contentContainer__5573a is reused by both the Level cards and
+   the Additional Perks cards, so it can't be told apart by class
+   alone. Default to dark here (covers Additional Perks)... */
+html body [class*="contentContainer__5573a" i] {
+	background: hsl(0,0%,0%,0.5) !important;
+	backdrop-filter: blur(var(--app-blur));
+	-webkit-backdrop-filter: blur(var(--app-blur));
+}
+ 
+/* ...then override back to transparent specifically inside the
+   Level cards, which sit in a container with an extra class
+   (powerupsLevelContainer__89463) the Perks section lacks. Plain
+   ancestor selector — no :has(), no perf cost */
+html body [class*="powerupsLevelContainer__89463" i] [class*="contentContainer__5573a" i] {
+	background: transparent !important;
+	background-color: transparent !important;
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
 }
  
 /* Remove backgrounds entirely from the Server Boosts page.
    Prefixed with html body and chained where the real element
    has multiple classes together, to beat Discord's own compound
    selectors (e.g. ".toolbar__89463.container__9293f.themed__9293f")
-   which have higher specificity than a single attribute match */
+   which have higher specificity than a single attribute match.
+   Includes the true outer wrappers (page__5e434, container__89463,
+   contentContainer__89463, powerupsSection__89463) since the
+   actual dark background likely lives on one of those rather
+   than the individual cards */
+html body [class*="page__5e434" i],
+html body [class*="container__89463" i],
+html body [class*="contentContainer__89463" i],
+html body [class*="powerupsSection__89463" i],
 html body [class*="sidebarContainer__89463" i],
-html body [class*="container__58c46" i],
-html body [class*="container__3f864" i],
 html body [class*="container__10ca6" i],
-html body [class*="container__1dc40" i],
+html body [class*="container__58c46" i]:not([class*="contentContainer__58c46" i]),
+html body [class*="contentContainer__58c46" i],
 html body [class*="powerupsContainer__89463" i],
-html body [class*="container__5573a" i][class*="card__823e1" i],
-html body [class*="container__5573a" i]:not([class*="card__823e1" i]),
-html body [class*="card__823e1" i],
+html body [class*="powerupContainer__89463" i],
+html body [class*="container__5573a" i]:not([class*="card__823e1" i]):not([class*="contentContainer__5573a" i]),
 html body [class*="parentContainer__5573a" i],
 html body [class*="container__6f9f7" i],
 html body [class*="toolbar__89463" i][class*="container__9293f" i] {
+	background: transparent !important;
+	background-color: transparent !important;
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+	box-shadow: none !important;
+}
+ 
+/* User profile popup — light frosted glass matching the
+   "Customisation Questions" boxes (--card-color), not the
+   darker --popout-color used for tooltips */
+html body [class*="profileCard__5d7c9" i] {
+	background: hsl(0,0%,100%,0.19) !important;
+	backdrop-filter: blur(var(--app-blur));
+	-webkit-backdrop-filter: blur(var(--app-blur));
+	border-radius: var(--card-radius);
+}
+ 
+/* Remove backgrounds: webhook/channel-follow cards, the
+   permission-sync warning card, and the roles/members sidebar
+   (including its wrapping ancestors, since the actual background
+   may sit on those rather than side_aa8da2 itself) */
+html body [class*="card_dc2e44" i][class*="card_b5dd01" i],
+html body [class*="card_b651ff" i][class*="card_b5dd01" i],
+html body [class*="sidebarScrollable__53543" i],
+html body [class*="scroller__53543" i],
+html body [class*="layoutStyle__0ab2c" i],
+html body [class*="side_aa8da2" i],
+html body [class*="header_aa8da2" i] {
+	background: transparent !important;
+	background-color: transparent !important;
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+	box-shadow: none !important;
+}
+ 
+/* Transparent background for the "no customisation options
+   yet" empty-state block, instead of hiding it entirely */
+html body [class*="content_f75fb0" i][class*="emptyPage__5d7c9" i] {
 	background: transparent !important;
 	background-color: transparent !important;
 	backdrop-filter: none !important;
@@ -253,5 +335,5 @@ html body [class*="toolbar__89463" i][class*="container__9293f" i] {
 	0%, 100% { box-shadow: 0 0 0 hsl(var(--accent-hue), var(--accent-saturation), var(--accent-lightness), 0.4); }
 	50%      { box-shadow: 0 0 16px 2px hsl(var(--accent-hue), var(--accent-saturation), var(--accent-lightness), 0.65); }
 }
- 
+
  
